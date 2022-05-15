@@ -16,7 +16,7 @@ public class MainWindow implements Initializable {
   @FXML
   private Canvas canvas;
 
-  private ArrayList<Double> axisY = new ArrayList<>();
+  private ArrayList<Double> axisX = new ArrayList<>();
   private ArrayList<Double> axisY = new ArrayList<>();
   private GraphicsContext gc;
 
@@ -33,7 +33,7 @@ public class MainWindow implements Initializable {
     gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
 
     for (int i = 0; i < 10; i++) {
-      axisY.add(50.0 + 10 * i);
+      axisX.add(50.0 + 10 * i);
       axisY.add(50 * Math.random());
     }
 
@@ -66,18 +66,18 @@ public class MainWindow implements Initializable {
     double interY = penY * maxY * (-1);
     gc.setFill(Color.RED);
 
-    for (int i = 0; i < axisY.size(); i++) {
-      gc.fillOval(conversion(axisY.get(i), penX, inter), conversion(axisY.get(i), penY, interY) - 3, 6, 6);
+    for (int i = 0; i < axisX.size(); i++) {
+      gc.fillOval(conversion(axisX.get(i), penX, inter), conversion(axisY.get(i), penY, interY) - 3, 6, 6);
     }
 
     gc.setStroke(Color.RED);
     gc.setLineWidth(2);
 
-    for (int i = 0; i < axisY.size() - 1; i++) {
+    for (int i = 0; i < axisX.size() - 1; i++) {
     	
-      gc.moveTo(conversion(axisY.get(i), penX, inter) + 3, conversion(axisY.get(i), penY, interY) + 3);
+      gc.moveTo(conversion(axisX.get(i), penX, inter) + 3, conversion(axisY.get(i), penY, interY) + 3);
       
-      gc.lineTo(conversion(axisY.get(i + 1), penX, inter) + 3, conversion(axisY.get(i + 1), penY, interY) + 3);
+      gc.lineTo(conversion(axisX.get(i + 1), penX, inter) + 3, conversion(axisY.get(i + 1), penY, interY) + 3);
     }
 
     gc.stroke();
